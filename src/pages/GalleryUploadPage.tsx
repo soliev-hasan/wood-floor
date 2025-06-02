@@ -28,7 +28,7 @@ const GalleryUploadPage: React.FC = () => {
     const formData = new FormData();
     formData.append("image", selectedFile);
     try {
-      const res = await fetch("http://localhost:5001/api/gallery", {
+      const res = await fetch("https://woodfloorllc.com/api/gallery", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

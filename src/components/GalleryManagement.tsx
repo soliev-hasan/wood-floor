@@ -20,7 +20,7 @@ const GalleryManagement: React.FC = () => {
 
   const fetchImages = () => {
     setLoading(true);
-    fetch("http://localhost:5001/api/gallery")
+    fetch("https://woodfloorllc.com/api/gallery")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -52,7 +52,7 @@ const GalleryManagement: React.FC = () => {
     const formData = new FormData();
     formData.append("image", selectedFile);
     try {
-      const res = await fetch("http://localhost:5001/api/gallery", {
+      const res = await fetch("https://woodfloorllc.com/api/gallery", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -77,7 +77,7 @@ const GalleryManagement: React.FC = () => {
   const handleDelete = async (id: string) => {
     if (!window.confirm("Delete this image?")) return;
     try {
-      const res = await fetch(`http://localhost:5001/api/gallery/${id}`, {
+      const res = await fetch(`https://woodfloorllc.com/api/gallery/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -154,7 +154,7 @@ const GalleryManagement: React.FC = () => {
         ) : (
           images.map((img) => (
             <div key={img._id} className="gallery-item admin">
-              <img src={`http://localhost:5001${img.url}`} alt="Work" />
+              <img src={`https://woodfloorllc.com/api${img.url}`} alt="Work" />
               <button
                 className="gallery-delete"
                 onClick={() => handleDelete(img._id)}

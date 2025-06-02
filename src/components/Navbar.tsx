@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     if (isAdmin && token) {
       // Service requests
-      fetch("http://localhost:5001/api/requests", {
+      fetch("https://woodfloorllc.com/api/requests", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
         })
         .catch(() => setPendingServiceRequests(0));
       // Consultation requests
-      fetch("http://localhost:5001/api/users/contact-requests", {
+      fetch("https://woodfloorllc.com/api/users/contact-requests", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -65,7 +65,6 @@ const Navbar: React.FC = () => {
       <button
         className={`mobile-menu-button${isMobileMenuOpen ? " open" : ""}`}
         onClick={() => setIsMobileMenuOpen((v) => !v)}
-        aria-label="Toggle menu"
       >
         <span className={`hamburger${isMobileMenuOpen ? " open" : ""}`}></span>
       </button>

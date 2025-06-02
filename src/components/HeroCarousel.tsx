@@ -33,7 +33,7 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ slides = [] }) => {
       ? imagePath.slice(1)
       : imagePath;
 
-    return `http://localhost:5001/${cleanPath}`;
+    return `https://woodfloorllc.com/${cleanPath}`;
   };
   const goToSlide = useCallback(
     (index: number) => {
@@ -85,7 +85,7 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ slides = [] }) => {
             }}
           >
             <img
-              src={getImageUrl(slide.imageUrl)}
+              src={`https://woodfloorllc.com/api/${slide.imageUrl}`}
               className={`carousel-slide ${
                 index === currentSlide ? "active" : ""
               }`}

@@ -17,13 +17,34 @@ const Contact: React.FC = () => {
     message: string;
   }>({ type: null, message: "" });
   const [services, setServices] = useState<{ _id: string; name: string }[]>([]);
+  const [contactInfo, setContactInfo] = useState({
+    phone: "",
+    email: "",
+    address: "",
+    socialLinks: {
+      instagram: "",
+      facebook: "",
+      whatsapp: "",
+    },
+  });
 
   useEffect(() => {
-    fetch("http://localhost:5001/api/services")
+    fetch("https://woodfloorllc.com/api/services")
       .then((res) => res.json())
       .then((data) => {
         if (data.success && Array.isArray(data.data)) {
           setServices(data.data);
+        }
+      });
+  }, []);
+
+  useEffect(() => {
+    // Загрузка контактной информации
+    fetch("https://woodfloorllc.com/api/contact-info")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          setContactInfo(data.data);
         }
       });
   }, []);
@@ -48,7 +69,7 @@ const Contact: React.FC = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        "http://localhost:5001/api/users/contact-requests",
+        "https://woodfloorllc.com/api/users/contact-requests",
         {
           method: "POST",
           headers: {
@@ -98,17 +119,47 @@ const Contact: React.FC = () => {
           <div className="contact-details">
             <div className="contact-item">
               <i className="fas fa-phone"></i>
-              <p style={{ color: "black" }}>651-999-94-96</p>
+              <p style={{ color: "black" }}>{contactInfo.phone}</p>
             </div>
             <div className="contact-item">
               <i className="fas fa-envelope"></i>
-              <p style={{ color: "black" }}>woodfloorsllc1@gmail.com</p>
+              <p style={{ color: "black" }}>{contactInfo.email}</p>
             </div>
             <div className="contact-item">
               <i className="fas fa-location-dot"></i>
-              <p style={{ color: "black" }}>
-                14300 34th Ave N Plymouth MN 55447
-              </p>
+              <p style={{ color: "black" }}>{contactInfo.address}</p>
+            </div>
+            <div className="contact-social">
+              <h3>Connect With Us</h3>
+              <div className="social-links">
+                <a
+                  href={contactInfo.socialLinks.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-link instagram"
+                >
+                  <i className="fab fa-instagram"></i>
+                  Instagram
+                </a>
+                <a
+                  href={contactInfo.socialLinks.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-link facebook"
+                >
+                  <i className="fab fa-facebook"></i>
+                  Facebook
+                </a>
+                <a
+                  href={contactInfo.socialLinks.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-link whatsapp"
+                >
+                  <i className="fab fa-whatsapp"></i>
+                  WhatsApp
+                </a>
+              </div>
             </div>
           </div>
           {/* <div className="business-hours">

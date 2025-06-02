@@ -1,17 +1,24 @@
-.contact-page {
-  padding: 2rem;
-  padding-top: 90px;
-  min-height: 100vh;
-  background-color: #f8f9fa;
-}
-
 .contact-page h1 {
   text-align: center;
   color: #2c3e50;
   margin-bottom: 3rem;
   font-size: 2.5rem;
 }
-
+.social-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.social-link {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.social-link:hover {
+  color: #3498db;
+}
 .contact-container {
   max-width: 1200px;
   margin: 0 auto;

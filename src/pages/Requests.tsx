@@ -27,7 +27,7 @@ const Requests: React.FC = () => {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const response = await fetch("http://localhost:5001/api/requests", {
+        const response = await fetch("https://woodfloorllc.com/api/requests", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -57,7 +57,7 @@ const Requests: React.FC = () => {
   ) => {
     try {
       const response = await fetch(
-        `http://localhost:5001/api/requests/${requestId}/status`,
+        `https://woodfloorllc.com/api/requests/${requestId}/status`,
         {
           method: "PATCH",
           headers: {

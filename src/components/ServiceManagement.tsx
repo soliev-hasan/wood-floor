@@ -117,7 +117,9 @@ const ServiceManagement: React.FC = () => {
       unit: service.unit,
       image: null,
     });
-    setPreviewUrl(service.image ? `http://localhost:5001${service.image}` : "");
+    setPreviewUrl(
+      service.image ? `https://woodfloorllc.com${service.image}` : ""
+    );
   };
 
   const handleDelete = async (id: string) => {
@@ -140,7 +142,7 @@ const ServiceManagement: React.FC = () => {
 
   const getImageUrl = (imagePath: string | undefined) => {
     if (!imagePath) return "";
-    return `http://localhost:5001${imagePath}`;
+    return `https://woodfloorllc.com${imagePath}`;
   };
 
   return (
@@ -192,7 +194,7 @@ const ServiceManagement: React.FC = () => {
             onChange={handleInputChange}
             required
           >
-            <option value="м²">м²</option>
+            <option value="м²">scft</option>
             <option value="м">м</option>
             <option value="pcs">pcs</option>
           </select>
@@ -236,7 +238,7 @@ const ServiceManagement: React.FC = () => {
               <div className="service-info">
                 {service.image && (
                   <img
-                    src={getImageUrl(service.image)}
+                    src={`https://woodfloorllc.com/api${service.image}`}
                     alt={service.name}
                     className="service-image"
                   />
@@ -245,7 +247,7 @@ const ServiceManagement: React.FC = () => {
                 <p>{service.description}</p>
                 <div className="service-details">
                   <span>
-                    Price: ${service.price}/{service.unit}
+                    Price: ${service.price}/{"scft"}
                   </span>
                 </div>
               </div>

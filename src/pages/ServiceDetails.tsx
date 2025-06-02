@@ -52,9 +52,9 @@ const ServiceDetails: React.FC = () => {
   }
 
   const backgroundUrl = service.backgroundImage
-    ? `http://localhost:5001${service.backgroundImage}`
+    ? `https://woodfloorllc.com/api/${service.backgroundImage}`
     : service.image
-    ? `http://localhost:5001${service.image}`
+    ? `https://woodfloorllc.com/api/${service.image}`
     : undefined;
 
   return (
@@ -79,14 +79,11 @@ const ServiceDetails: React.FC = () => {
               <span>
                 Price: <b>${service.price}</b>
               </span>
-              <span>
-                Duration: <b>{service.duration} min</b>
-              </span>
             </div>
           </div>
           {service.image && (
             <img
-              src={`http://localhost:5001${service.image}`}
+              src={`http://woodfloorllc.com/api/${service.image}`}
               alt={service.name}
               className="service-details-image"
             />
@@ -101,15 +98,14 @@ const ServiceDetails: React.FC = () => {
               <li key={idx}>{step}</li>
             ))}
           </ol>
-        </div>
-
-        <div className="service-section">
-          <h3>Features</h3>
-          <ul>
-            {(service.features || defaultFeatures).map((feature, idx) => (
-              <li key={idx}>{feature}</li>
-            ))}
-          </ul>
+          <div className="service-section">
+            <h3>Features</h3>
+            <ul>
+              {(service.features || defaultFeatures).map((feature, idx) => (
+                <li key={idx}>{feature}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </div>

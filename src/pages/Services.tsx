@@ -28,7 +28,7 @@ const Services: React.FC = () => {
   // Функция для получения полного URL изображения
   const getImageUrl = (imagePath: string | undefined) => {
     if (!imagePath) return "";
-    return `http://localhost:5001${imagePath}`;
+    return `https://woodfloorllc.com${imagePath}`;
   };
 
   const handleRequestClick = (
@@ -65,7 +65,7 @@ const Services: React.FC = () => {
           >
             {service.image && (
               <img
-                src={getImageUrl(service.image)}
+                src={`https://woodfloorllc.com/api${service.image}`}
                 alt={service.name}
                 className="service-image"
               />
@@ -79,7 +79,7 @@ const Services: React.FC = () => {
               className="request-button"
               onClick={(e) => handleRequestClick(service._id, service.name, e)}
             >
-              Book Now
+              Get a quote
             </button>
           </div>
         ))}

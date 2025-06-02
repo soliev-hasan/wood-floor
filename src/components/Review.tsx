@@ -3,7 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import axios from "axios";
 import "./Review.css";
 
-const API_URL = "http://localhost:5001";
+const API_URL = "https://woodfloorllc.com";
 
 // Create axios instance with default config
 const api = axios.create({
@@ -89,7 +89,7 @@ const Review: React.FC = () => {
       console.log(localStorage.getItem("token"));
 
       await axios.post(
-        "http://localhost:5001/api/reviews",
+        "https://woodfloorllc.com/api/reviews",
         { rating, comment },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },

@@ -92,7 +92,7 @@ const SliderManagement: React.FC = () => {
       image: null,
     });
     setPreviewUrl(
-      slider.imageUrl ? `http://localhost:5001${slider.imageUrl}` : ""
+      slider.imageUrl ? `https://woodfloorllc.com${slider.imageUrl}` : ""
     );
     setIsEditing(true);
   };
@@ -129,7 +129,7 @@ const SliderManagement: React.FC = () => {
     const cleanPath = imagePath.startsWith("/")
       ? imagePath.slice(1)
       : imagePath;
-    return `http://localhost:5001/${cleanPath}`;
+    return `https://woodfloorllc.com/api${cleanPath}`;
   };
 
   const defaultSliders = [
@@ -307,7 +307,10 @@ const SliderManagement: React.FC = () => {
         <div className="sliders-grid">
           {(sliders || []).map((slider) => (
             <div key={slider._id} className="slider-card">
-              <img src={getImageUrl(slider.imageUrl)} alt={slider.title} />
+              <img
+                src={`https://woodfloorllc.com/api${slider.imageUrl}`}
+                alt={slider.title}
+              />
               <div className="slider-info">
                 <h4>{slider.title}</h4>
                 <p>{slider.description}</p>

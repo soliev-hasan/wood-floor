@@ -19,7 +19,7 @@ const SliderComponent: React.FC = () => {
     try {
       setLoading(true);
       const response = await axios.get<ApiResponse<Slide[]>>(
-        "http://localhost:5001/api/sliders"
+        "https://woodfloorllc.com/api/sliders"
       );
       setSlides(response.data.data.filter((slide) => slide.isActive));
     } catch (err) {

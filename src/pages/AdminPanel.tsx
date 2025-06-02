@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import "./AdminPanel.css";
+import ContactInfoManagement from "../components/ContactInfoManagement";
 
 interface SliderItem {
   _id: string;
@@ -87,6 +88,12 @@ const AdminPanel: React.FC = () => {
           onClick={() => setActiveTab("sliders")}
         >
           Sliders
+        </button>
+        <button
+          className={activeTab === "contact" ? "active" : ""}
+          onClick={() => setActiveTab("contact")}
+        >
+          Contact Information
         </button>
       </div>
 
@@ -203,6 +210,13 @@ const AdminPanel: React.FC = () => {
               </button>
             </form>
           )}
+        </div>
+      )}
+
+      {activeTab === "contact" && (
+        <div className="admin-content">
+          <h2>Contact Information Management</h2>
+          <ContactInfoManagement />
         </div>
       )}
     </div>

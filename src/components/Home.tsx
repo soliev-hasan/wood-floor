@@ -12,10 +12,6 @@ const Home: React.FC = () => {
   useEffect(() => {
     getSliders();
   }, []);
-  const getImageUrl = (imagePath: string | undefined) => {
-    if (!imagePath) return "";
-    return `http://localhost:5001${imagePath}`;
-  };
 
   return (
     <div className="home">
@@ -34,7 +30,7 @@ const Home: React.FC = () => {
             >
               {service.image && (
                 <img
-                  src={getImageUrl(service.image)}
+                  src={`https://woodfloorllc.com/api${service.image}`}
                   alt={service.name}
                   className="service-image"
                 />
@@ -73,7 +69,7 @@ const Home: React.FC = () => {
               <p>Years Experience</p>
             </div>
             <div className="stat-item">
-              <h3>100+</h3>
+              <h3>500+</h3>
               <p>Projects Completed</p>
             </div>
             <div className="stat-item">

@@ -70,7 +70,8 @@ button {
 }
 
 button:hover {
-  background: var(--secondary-color);
+  background: rgb(255, 174, 92);
+  /* background: var(--secondary-color); */
 }
 
 button:disabled {

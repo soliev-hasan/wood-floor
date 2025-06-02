@@ -3,6 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import ServiceManagement from "./ServiceManagement";
 import SliderManagement from "./admin/SliderManagement";
 import GalleryManagement from "./GalleryManagement";
+import ContactInfoManagement from "./ContactInfoManagement";
 import "./AdminDashboard.css";
 
 interface ContactRequest {
@@ -18,7 +19,7 @@ interface ContactRequest {
 
 const AdminDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState<
-    "requests" | "services" | "sliders" | "gallery"
+    "requests" | "services" | "sliders" | "gallery" | "contact"
   >("requests");
   const [requests, setRequests] = useState<ContactRequest[]>([]);
   const [loading, setLoading] = useState(true);
@@ -32,7 +33,7 @@ const AdminDashboard: React.FC = () => {
   const fetchRequests = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5001/api/users/contact-requests",
+        "https://woodfloorllc.com/api/users/contact-requests",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -62,7 +63,7 @@ const AdminDashboard: React.FC = () => {
       }
 
       const response = await fetch(
-        `http://localhost:5001/api/users/contact-requests/${id}`,
+        `https://woodfloorllc.com/api/users/contact-requests/${id}`,
         {
           method: "PATCH",
           headers: {
@@ -126,6 +127,12 @@ const AdminDashboard: React.FC = () => {
         >
           Gallery
         </button>
+        <button
+          className={`tab-button ${activeTab === "contact" ? "active" : ""}`}
+          onClick={() => setActiveTab("contact")}
+        >
+          Contact Information
+        </button>
       </div>
 
       {activeTab === "requests" ? (
@@ -185,8 +192,10 @@ const AdminDashboard: React.FC = () => {
         <ServiceManagement />
       ) : activeTab === "sliders" ? (
         <SliderManagement />
-      ) : (
+      ) : activeTab === "gallery" ? (
         <GalleryManagement />
+      ) : (
+        <ContactInfoManagement />
       )}
     </div>
   );
